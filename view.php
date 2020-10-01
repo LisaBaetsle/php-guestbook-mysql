@@ -39,14 +39,7 @@
     <div class="container-posts grid-item">
       <h2>Previous posts</h2>
       <div class="previous-posts">
-        <?php $reversed = array_reverse($guestbook->getListOfPosts());
-        foreach ($reversed as $post) {
-          echo '<div class="previous-post"><p class="title">' . $post->getTitle() . '</p><br>';
-          echo '<p class="date">' . $post->getDate() . '</p><br>';
-          echo '<p class="content">' . $post->getContent() . '</p><br>';
-          echo '<p class="name"> Written by: ' . $post->getName() . '</p><br></div>';
-          echo '<br>';
-        } ?>
+
       </div>
     </div>
   </div>

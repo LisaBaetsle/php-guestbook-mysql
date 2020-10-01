@@ -3,15 +3,14 @@
 declare(strict_types=1);
 
 // Requires
-require 'guestbook.php';
-require 'post.php';
+require 'database.php';
 
 // Variables
 $titleErr = $dateErr = $contentErr = $nameErr = "";
 $title = $date = $content = $name = "";
 $isFormValid;
 
-$guestbook = new Guestbook;
+// $guestbook = new Guestbook;
 
 // Validate and check requirements form
 if (!empty($_POST)) {
@@ -54,8 +53,7 @@ if (!empty($_POST)) {
 
   // The form is valid
   if ($isFormValid == true) {
-    // Add the input to the textfile
-    $guestbook->addPost($title, $date, $content, $name);
+    $stmt->execute();
   };
 };
 
