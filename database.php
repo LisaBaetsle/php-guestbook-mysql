@@ -23,16 +23,19 @@ function openConnection(): PDO
   return $pdo;
 }
 
-$pdo = openConnection(); // this is our function from above
-// $handle = $pdo->prepare('SELECT some_field FROM some_table where id = :id'); // notice the ":id" notation
-// $handle->bindValue(':id', 5); // Binding the values
-// $handle->execute();
-// $rows = $handle->fetchAll();
-// echo htmlspecialchars($rows[0]['some_field']);
+// Connecting to the database
+$pdo = openConnection();
 
 // For inserting the posts
 $stmt = $pdo->prepare("INSERT INTO posts (title, date, content, name) VALUES (:title, :date, :content, :name)");
-$stmt->bindParam(':title', $title);
-$stmt->bindParam(':date', $date);
-$stmt->bindParam(':content', $content);
-$stmt->bindParam(':name', $name);
+$stmt->bindParam(':title', $title); // Binding the values
+$stmt->bindParam(':date', $date); // Binding the values
+$stmt->bindParam(':content', $content); // Binding the values
+$stmt->bindParam(':name', $name); // Binding the values
+
+// For viewing the posts
+$handle = $pdo->prepare('SELECT * FROM posts WHERE id < :id');
+$handle->bindValue(':id', 20); // Binding the values
+$handle->execute();
+$rows = $handle->fetchAll();
+$reversedRows = array_reverse($rows);
