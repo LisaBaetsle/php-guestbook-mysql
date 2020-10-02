@@ -21,12 +21,13 @@ class Guestbook
     return $reversedRows;
   }
 
-  public function addAPostToGuestbook()
+  public function addAPostToGuestbook($title, $date, $content, $name)
   {
     $stmt = $this->pdo->prepare("INSERT INTO posts (title, date, content, name) VALUES (:title, :date, :content, :name)");
     $stmt->bindParam(':title', $title); // Binding the values
     $stmt->bindParam(':date', $date); // Binding the values
     $stmt->bindParam(':content', $content); // Binding the values
     $stmt->bindParam(':name', $name); // Binding the values
+    $stmt->execute();
   }
 }

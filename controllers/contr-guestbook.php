@@ -54,7 +54,7 @@ if (!empty($_POST)) {
 
   // The form is valid
   if ($isFormValid == true) {
-    $stmt->execute();
+    $guestbook->addAPostToGuestbook($title, $date, $content, $name);
   };
 };
 
