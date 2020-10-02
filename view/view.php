@@ -39,7 +39,7 @@
     <div class="container-posts grid-item">
       <h2>Previous posts</h2>
       <div class="previous-posts">
-        <?php foreach ($reversedRows as $row) {
+        <?php foreach ($guestbook->getLastTwentyPosts() as $row) {
           echo '<div class="previous-post"><p class="title">' . $row['title'] . '</p><br>';
           echo '<p class="date">' . $row['date'] . '</p><br>';
           echo '<p class="content">' . $row['content'] . '</p><br>';
