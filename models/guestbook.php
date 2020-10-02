@@ -13,12 +13,10 @@ class Guestbook
 
   public function getLastTwentyPosts()
   {
-    $handle = $this->pdo->prepare('SELECT * FROM posts WHERE id < :id');
-    $handle->bindValue(':id', 20); // Binding the values
+    $handle = $this->pdo->prepare('SELECT * FROM posts ORDER BY id DESC LIMIT 20');
     $handle->execute();
     $rows = $handle->fetchAll();
-    $reversedRows = array_reverse($rows);
-    return $reversedRows;
+    return $rows;
   }
 
   public function addAPostToGuestbook($title, $date, $content, $name)
