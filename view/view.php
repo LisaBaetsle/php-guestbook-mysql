@@ -38,15 +38,16 @@
 
     <div class="container-posts grid-item">
       <h2>Previous posts</h2>
-      <div class="previous-posts">
         <?php foreach ($guestbook->getLastTwentyPosts() as $row) {
-          echo '<div class="previous-post"><p class="title">' . $row['title'] . '</p><br>';
-          echo '<p class="date">' . $row['date'] . '</p><br>';
-          echo '<p class="content">' . $row['content'] . '</p><br>';
-          echo '<p class="name"> Written by: ' . $row['name'] . '</p><br></div>';
-          echo '<br>';
-        } ?>
-      </div>
+          echo '<div class="previous-post">' ?>
+          
+          <p class="title"> <?= $row['title'] ?></p>
+          <p class="date"> <?= $row['date'] ?></p>
+          <p class="content"> <?= $row['content'] ?></p>
+          <p class="name"> written by <?= $row['name'] ?></p>
+          
+        <?php echo '</div>'; } ?>
+
     </div>
   </div>
 

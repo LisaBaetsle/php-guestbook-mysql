@@ -28,4 +28,10 @@ class Guestbook
     $stmt->bindParam(':name', $name); // Binding the values
     $stmt->execute();
   }
+
+  public function deletePost($id) {
+    $dlt = $this->pdo->prepare('DELETE FROM posts WHERE ID = :id');
+    $dlt->bindValue(':id', $id);
+    $dlt->execute();
+  }
 }
