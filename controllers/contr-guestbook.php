@@ -12,6 +12,7 @@ $guestbook = new Guestbook($pdo);
 $titleErr = $dateErr = $contentErr = $nameErr = "";
 $title = $date = $content = $name = "";
 $isFormValid;
+$id = 0;
 
 if (isset($_POST['delete'])) {
   $id = $_POST['delete'];
@@ -26,10 +27,13 @@ if (isset($_POST['delete'])) {
     $name = $specificPost['name'];
     $id = $specificPost['id'];
   }
-  if (!empty($_POST['updateAgain'])) {
-    echo 'the id is: ' . $id;
-    $guestbook->updatePost($id, $title, $date, $_POST["content"], $name);
-  }
+} else if (!empty($_POST['updateAgain'])) {
+  $id = $_POST['updateAgain'];
+  $title = test_input($_POST["title"]);
+  $date = test_input($_POST["date"]);
+  $content = test_input($_POST["content"]);
+  $name = test_input($_POST["name"]);
+  $guestbook->updatePost($id, $title, $date, $content, $name);
 }
 
 // Validate and check requirements form
