@@ -16,6 +16,20 @@ $isFormValid;
 if (isset($_POST['delete'])) {
   $id = $_POST['delete'];
   $guestbook->deletePost($id);
+} else if (isset($_POST['update'])) {
+  $id = $_POST['update'];
+  echo $id;
+  foreach ($guestbook->getSpecificPost($id) as $specificPost) {
+    $title = $specificPost['title'];
+    $date = $specificPost['date'];
+    $content = $specificPost['content'];
+    $name = $specificPost['name'];
+    $id = $specificPost['id'];
+  }
+  if (!empty($_POST['updateAgain'])) {
+    echo 'the id is: ' . $id;
+    $guestbook->updatePost($id, $title, $date, $_POST["content"], $name);
+  }
 }
 
 // Validate and check requirements form

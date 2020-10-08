@@ -17,22 +17,24 @@
       <h2>Write something in our guestbook</h2>
       <form method="post">
         <label for="title">Title: </label>
-        <input type="text" name="title" value="">
+        <input type="text" name="title" value="<?= $title ?>">
         <span class="error">* <?= $titleErr; ?> </span>
         <br><br>
         <label for="date">Date: </label>
-        <input type="date" name="date" value="">
+        <input type="date" name="date" value="<?= $date ?>">
         <span class="error">* <?php echo $dateErr; ?> </span>
         <br><br>
         <label for="content">Content: </label>
-        <textarea name="content" rows="5" cols="40"></textarea>
+        <textarea name="content" rows="5" cols="40"><?= $content ?></textarea>
         <span class="error">* <?php echo $contentErr; ?> </span>
         <br><br>
         <label for="name">Name: </label>
-        <input type="text" name="name" value="">
+        <input type="text" name="name" value="<?= $name ?>">
         <span class="error">* <?php echo $nameErr; ?> </span>
         <br><br>
-        <input type="submit" name="submit" value="Submit">
+        <input type="submit" name="submit" value="submit">
+        <button type="submit" name="updateAgain" name='updateAgain'>Update</button>
+
       </form>
     </div>
 
@@ -47,6 +49,7 @@
         <p class="name"> written by <?= $row['name'] ?></p>
         <form method="post">
           <button type="submit" name="delete" name='delete' value="<?= $row['id'] ?>">Delete</button>
+          <button type="submit" name="update" name='update' value="<?= $row['id'] ?>">Update</button>
         </form>
 
       <?php echo '</div>';

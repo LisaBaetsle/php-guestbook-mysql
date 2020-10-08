@@ -29,9 +29,30 @@ class Guestbook
     $stmt->execute();
   }
 
-  public function deletePost($id) {
+  public function deletePost($id)
+  {
     $dlt = $this->pdo->prepare('DELETE FROM posts WHERE ID = :id');
     $dlt->bindValue(':id', $id);
     $dlt->execute();
+  }
+
+  public function getSpecificPost($id)
+  {
+    $pst = $this->pdo->prepare('SELECT * FROM posts WHERE ID = :id');
+    $pst->bindValue(':id', $id);
+    $pst->execute();
+    $selectedPost = $pst->fetchAll();
+    return $selectedPost;
+  }
+
+  public function updatePost($id, $title, $date, $content, $name)
+  {
+    $updt = $this->pdo->prepare("UPDATE posts SET title = :title, date = :date, content = :content, name = :name WHERE ID = :id");
+    $updt->bindParam(':title', $title); // Binding the values
+    $updt->bindParam(':date', $date); // Binding the values
+    $updt->bindParam(':content', $content); // Binding the values
+    $updt->bindParam(':name', $name); // Binding the values
+    $updt->bindValue(':id', $id);
+    $updt->execute();
   }
 }
