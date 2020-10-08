@@ -38,16 +38,19 @@
 
     <div class="container-posts grid-item">
       <h2>Previous posts</h2>
-        <?php foreach ($guestbook->getLastTwentyPosts() as $row) {
-          echo '<div class="previous-post">' ?>
-          
-          <p class="title"> <?= $row['title'] ?></p>
-          <p class="date"> <?= $row['date'] ?></p>
-          <p class="content"> <?= $row['content'] ?></p>
-          <p class="name"> written by <?= $row['name'] ?></p>
-          <button id='button-<?= $row['id']?>'>Delete</button>
+      <?php foreach ($guestbook->getLastTwentyPosts() as $row) {
+        echo '<div class="previous-post">' ?>
 
-        <?php echo '</div>'; } ?>
+        <p class="title"> <?= $row['title'] ?></p>
+        <p class="date"> <?= $row['date'] ?></p>
+        <p class="content"> <?= $row['content'] ?></p>
+        <p class="name"> written by <?= $row['name'] ?></p>
+        <form method="post">
+          <button type="submit" name="delete" name='delete' value="<?= $row['id'] ?>">Delete</button>
+        </form>
+
+      <?php echo '</div>';
+      } ?>
 
     </div>
   </div>

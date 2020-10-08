@@ -13,8 +13,13 @@ $titleErr = $dateErr = $contentErr = $nameErr = "";
 $title = $date = $content = $name = "";
 $isFormValid;
 
+if (isset($_POST['delete'])) {
+  $id = $_POST['delete'];
+  $guestbook->deletePost($id);
+}
+
 // Validate and check requirements form
-if (!empty($_POST)) {
+else if (!empty($_POST)) {
 
   //title
   if (empty($_POST["title"])) {
@@ -66,3 +71,5 @@ function test_input($data)
   $data = htmlspecialchars($data);
   return $data;
 };
+
+var_dump($_POST);
