@@ -13,13 +13,16 @@ $titleErr = $dateErr = $contentErr = $nameErr = "";
 $title = $date = $content = $name = "";
 $isFormValid;
 $id = 0;
+$submitButtonVisible = 'visible';
+$updateButtonVisible = 'hidden';
 
 if (isset($_POST['delete'])) {
   $id = $_POST['delete'];
   $guestbook->deletePost($id);
 } else if (isset($_POST['update'])) {
   $id = $_POST['update'];
-  echo $id;
+  $submitButtonVisible = 'hidden';
+  $updateButtonVisible = 'visible';
   foreach ($guestbook->getSpecificPost($id) as $specificPost) {
     $title = $specificPost['title'];
     $date = $specificPost['date'];
@@ -28,12 +31,15 @@ if (isset($_POST['delete'])) {
     $id = $specificPost['id'];
   }
 } else if (!empty($_POST['updateAgain'])) {
+  $submitButtonVisible = 'visible';
+  $updateButtonVisible = 'hidden';
   $id = $_POST['updateAgain'];
   $title = test_input($_POST["title"]);
   $date = test_input($_POST["date"]);
   $content = test_input($_POST["content"]);
   $name = test_input($_POST["name"]);
   $guestbook->updatePost($id, $title, $date, $content, $name);
+  $title = $date = $content = $name = "";
 }
 
 // Validate and check requirements form
@@ -89,5 +95,3 @@ function test_input($data)
   $data = htmlspecialchars($data);
   return $data;
 };
-
-var_dump($_POST);

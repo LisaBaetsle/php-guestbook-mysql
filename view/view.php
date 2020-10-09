@@ -32,8 +32,8 @@
         <input type="text" name="name" value="<?= $name ?>">
         <span class="error">* <?php echo $nameErr; ?> </span>
         <br><br>
-        <input type="submit" name="submit" value="submit">
-        <button type="submit" name="updateAgain" value="<?= $id ?>">Update</button>
+        <input class="big-button" type="submit" name="submit" value="Submit" style="visibility:<?= $submitButtonVisible ?>;">
+        <button class="big-button" type="submit" name="updateAgain" value="<?= $id ?>" style="visibility:<?= $updateButtonVisible ?>;">Update</button>
 
       </form>
     </div>
@@ -48,8 +48,8 @@
         <p class="content"> <?= $row['content'] ?></p>
         <p class="name"> written by <?= $row['name'] ?></p>
         <form method="post">
-          <button type="submit" name="delete" value="<?= $row['id'] ?>">Delete</button>
-          <button type="submit" name="update" value="<?= $row['id'] ?>">Update</button>
+          <button class="small-button" type="submit" name="delete" value="<?= $row['id'] ?>">Delete</button>
+          <button class="small-button" type="submit" name="update" value="<?= $row['id'] ?>">Update</button>
         </form>
 
       <?php echo '</div>';

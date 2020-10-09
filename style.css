@@ -3,7 +3,7 @@ body {
   color: #2a9d8f;
 }
 
-header > h1 {
+header>h1 {
   text-align: center;
   padding-top: 30px;
   padding-bottom: 10px;
@@ -34,7 +34,7 @@ p {
   margin: 0;
 }
 
-input[type='submit'] {
+.big-button {
   background-color: #2a9d8f;
   color: white;
   font-size: 16px;
@@ -64,4 +64,13 @@ textarea {
 
 .name {
   font-size: 18px;
+}
+
+.small-button {
+  background-color: #264653;
+  color: #2a9d8f;
+  font-size: 16px;
+  padding: 10px 30px;
+  margin-top: 10px;
+  border-style: none;
 }
